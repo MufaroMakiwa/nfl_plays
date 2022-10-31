@@ -57,24 +57,19 @@ def construct_data_set(game_id: str, play_id: str):
     COLOR = "color"
 
     # get the game data from games.csv
-    game_date, week = None, None
+    week = None
     with open("games.csv", "r") as f:
         for game in csv.DictReader(f):
             if game[GAME_ID] == game_id:
-                game_date = game[GAME_DATE]
                 week = game[WEEK]
                 break
         else:
             raise KeyError(f"game with gameID - {game_id} - not found")
 
     # get play details from plays.csv
-    play_description, quarter, game_clock = None, None, None
     with open("plays.csv", "r") as f:
         for play in csv.DictReader(f):
             if play[PLAY_ID] == play_id:
-                play_description = play[PLAY_DESCRIPTION]
-                quarter = play[QUARTER]
-                game_clock = play[GAME_CLOCK]
                 break
         else:
             raise KeyError(f"play with playID - {play_id} - not found")
@@ -121,6 +116,6 @@ if __name__ == '__main__':
         "2021091600": ["65", "187", "235"],
         "2021100700": ["95", "165", "227"]
     }
-    for game, play_ids in files.items():
+    for game_, play_ids in files.items():
         for _id in play_ids:
-            construct_data_set(game, _id)
+            construct_data_set(game_, _id)
