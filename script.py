@@ -1,42 +1,6 @@
 import csv
 import json
 
-colors = {
-    'ARI': "#97233F",
-    'ATL': "#A71930",
-    'BAL': '#241773',
-    'BUF': "#00338D",
-    'CAR': "#0085CA",
-    'CHI': "#C83803",
-    'CIN': "#FB4F14",
-    'CLE': "#311D00",
-    'DAL': '#003594',
-    'DEN': "#FB4F14",
-    'DET': "#0076B6",
-    'GB': "#203731",
-    'HOU': "#03202F",
-    'IND': "#002C5F",
-    'JAX': "#9F792C",
-    'KC': "#E31837",
-    'LA': "#003594",
-    'LAC': "#0080C6",
-    'LV': "#000000",
-    'MIA': "#008E97",
-    'MIN': "#4F2683",
-    'NE': "#002244",
-    'NO': "#D3BC8D",
-    'NYG': "#0B2265",
-    'NYJ': "#125740",
-    'PHI': "#004C54",
-    'PIT': "#FFB612",
-    'SEA': "#69BE28",
-    'SF': "#AA0000",
-    'TB': '#D50A0A',
-    'TEN': "#4B92DB",
-    'WAS': "#5A1414",
-    'football': '#CBB67C'
-}
-
 
 def construct_data_set(game_id: str, play_id: str):
     FRAME_ID = "frameId"
@@ -47,14 +11,9 @@ def construct_data_set(game_id: str, play_id: str):
     NFL_ID = "nflId"
     OFFICIAL_POSITION = "officialPosition"
     PFF_ROLE = "pff_role"
-    PLAY_DESCRIPTION = "playDescription"
-    QUARTER = "quarter"
-    GAME_CLOCK = "gameClock"
     PLAY_ID = "playId"
     GAME_ID = "gameId"
-    GAME_DATE = "gameDate"
     WEEK = "week"
-    COLOR = "color"
 
     # get the game data from games.csv
     week = None
@@ -111,11 +70,11 @@ def construct_data_set(game_id: str, play_id: str):
 
 
 if __name__ == '__main__':
-    files = {
+    plays = {
         "2021090900": ["97", "137", "187"],
         "2021091600": ["65", "187", "235"],
         "2021100700": ["95", "165", "227"]
     }
-    for game_, play_ids in files.items():
+    for game_, play_ids in plays.items():
         for _id in play_ids:
             construct_data_set(game_, _id)
